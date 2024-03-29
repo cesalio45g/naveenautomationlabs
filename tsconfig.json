@@ -2,10 +2,15 @@
    "compilerOptions": {
       "target": "es6",
       "lib": ["es6", "dom"],
-      "types": ["cypress", "node"],
+      "types": [
+         "cypress",
+         "node",
+         "cypress-mochawesome-reporter",
+         "@cypress/grep"
+      ],
       "module": "CommonJS",
       "resolveJsonModule": true,
       "esModuleInterop": true
    },
-   "include": ["**/*.ts"]
+   "include": ["**/*.ts", "cypress.config.js"]
 }

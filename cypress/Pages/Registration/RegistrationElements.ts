@@ -11,7 +11,7 @@ class Registration {
     *
     * @returns last name input field from Registration page
     */
-   getLastName() {
+   getLastNameField() {
       return cy.get('input[name="lastname"]');
    }
 

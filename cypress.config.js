@@ -23,6 +23,8 @@ module.exports = defineConfig({
       video: true,
       setupNodeEvents(on, config) {
          require('cypress-mochawesome-reporter/plugin')(on);
+         require('@cypress/grep/src/plugin')(config);
+         return config;
       },
    },
 });
