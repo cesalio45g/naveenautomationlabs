@@ -49,13 +49,18 @@ class Registration {
 
    /**
     *
-    * @param {string} value
-    * @returns newsletter radio button from Registration page
+    * @returns the 'yes' option to newsletter subscription
     */
-   getSubscribeRadio(value) {
-      return cy.get(
-         'input[type="radio"][name="newsletter"][value="' + value + '"]'
-      );
+   getSubscribeNews() {
+      return cy.get('input[type="radio"][name="newsletter"][value="1"]');
+   }
+
+   /**
+    *
+    * @returns the 'no' option to newsletter subscription
+    */
+   getUnsubscribeNews() {
+      return cy.get('input[type="radio"][name="newsletter"][value="0"]');
    }
 
    /**
