@@ -1,8 +1,9 @@
 {
-  "devDependencies": {
-    "@types/node": "^20.11.30",
-    "cypress": "^13.7.1",
-    "cypress-mochawesome-reporter": "^3.8.2",
-    "typescript": "^5.4.3"
-  }
+   "devDependencies": {
+      "@cypress/grep": "^4.0.1",
+      "@types/node": "^20.11.30",
+      "cypress": "^13.7.1",
+      "cypress-mochawesome-reporter": "^3.8.0",
+      "typescript": "^5.4.3"
+   }
 }

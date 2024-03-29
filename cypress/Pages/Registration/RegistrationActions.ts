@@ -17,7 +17,7 @@ class RegistrationActions {
     * Clears the input field, then types the value found in 'lname'
     */
    enterLastName(lname: string) {
-      pageElements.getLastName().clear().type(lname);
+      pageElements.getLastNameField().clear().type(lname);
    }
 
    /**
@@ -72,7 +72,7 @@ class RegistrationActions {
     *
     * Selects or unselects the privacy policy checkbox
     */
-   enterPrivacycheckbox() {
+   togglePrivacyCheckbox() {
       pageElements.getPrivacyCheckbox().check();
    }
 
