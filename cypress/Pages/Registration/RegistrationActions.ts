@@ -60,20 +60,34 @@ class RegistrationActions {
 
    /**
     *
-    * @param {string} value
-    * This is a 1 or 0 value
-    * This will check the 'yes' or 'no' subscribe radio button
+    * This will check the 'yes' subscribe radio button
     */
-   toggleSubscribe(value: string) {
-      pageElements.getSubscribeRadio(value).check();
+   subscribeNews() {
+      pageElements.getSubscribeNews().check();
    }
 
    /**
     *
-    * Selects or unselects the privacy policy checkbox
+    * This will check the 'no' subscribe radio button
     */
-   togglePrivacyCheckbox() {
+   unsubscribeNews() {
+      pageElements.getUnsubscribeNews().check();
+   }
+
+   /**
+    *
+    * Selects the privacy policy checkbox
+    */
+   checkPrivacyCheckbox() {
       pageElements.getPrivacyCheckbox().check();
+   }
+
+   /**
+    *
+    * Unselects the privacy policy checkbox
+    */
+   uncheckPrivacyCheckbox() {
+      pageElements.getPrivacyCheckbox().uncheck();
    }
 
    /**
@@ -84,6 +98,11 @@ class RegistrationActions {
       pageElements.getSubmitBtn().click();
    }
 
+   /**
+    *
+    * @param {object} user
+    * Takes in the user object and fills in the registration form with approprate data
+    */
    enterUserRegistrationInfo({
       user: { firstname, lastname, email, telephone, password, subscribe },
    }) {
@@ -93,6 +112,18 @@ class RegistrationActions {
       this.enterTelephone(telephone);
       this.enterPassword(password);
       this.enterConfirmPassword(password);
+      // privacy policy checkbox is un-selected by default
+      this.checkPrivacyCheckbox();
+   }
+
+   clearUserRegistrationInfo() {
+      pageElements.getFirstNameField().clear();
+      pageElements.getLastNameField().clear();
+      pageElements.getEmailField().clear();
+      pageElements.getTelephoneField().clear();
+      pageElements.getPasswordField().clear();
+      pageElements.getConfirmPasswordField().clear();
+      this.uncheckPrivacyCheckbox();
    }
 }
 
