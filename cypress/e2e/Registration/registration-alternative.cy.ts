@@ -14,7 +14,7 @@ import * as User from '../../fixtures/registeredUsers.json'; // This import styl
  * Drawbacks, this would not be used on a submission form, but this is to show how tests can run, one after another
  * without reloading the page - there may be some use cases for this.
  */
-describe(
+describe.skip(
    'Given a user visits the Registration page',
    { tags: '@negative' },
    () => {

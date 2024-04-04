@@ -10,7 +10,7 @@ describe('Given a user visits the Login page', () => {
 
    context(
       'When we validate the content of the login widget',
-      { tags: 'functional' },
+      { tags: '@functional' },
       () => {
          it('Then the title of the login login widget shall be Returning Customer', () => {
             cy.get('div.col-sm-6')
@@ -42,7 +42,7 @@ describe('Given a user visits the Login page', () => {
 
    context(
       'When the user enters invalid e-mail credentials and tries to login',
-      { tags: 'negative' },
+      { tags: '@negative' },
       () => {
          it('Then the login attempt shall fail and an invalid e-mail warning message shall appear', () => {
             loginActions.enterEmailAddress('invalidEmail');
@@ -65,7 +65,7 @@ describe('Given a user visits the Login page', () => {
 
    context(
       'When the user enters invalid password credentials and tries to login',
-      { tags: 'negative' },
+      { tags: '@negative' },
       () => {
          it('Then the login attempt shall fail and an invalid password warning message shall appear', () => {
             loginActions.enterEmailAddress(Cypress.env('EMAIL'));
@@ -82,6 +82,21 @@ describe('Given a user visits the Login page', () => {
             cy.location().then((loc) => {
                expect(loc.pathname).to.eq('/opencart/index.php');
             });
+         });
+      }
+   );
+
+   /**
+    * After this test, the session has been set and users may access pages directly
+    * If using 'parrallel execution, we have to ensure that each suite does the 'doLogin' command
+    */
+   context(
+      'When the user enters valid credentials for logging in',
+      { tags: '@functional' },
+      () => {
+         it('Then the user shall log in and be redirected to the accounts page', () => {
+            cy.clearCookies();
+            cy.doLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
          });
       }
    );
