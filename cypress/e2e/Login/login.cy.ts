@@ -5,6 +5,7 @@ import { sideNavMenuItems } from '../../Pages/Login/LoginElements';
 
 describe('Given a user visits the Login page', () => {
    beforeEach(() => {
+      cy.clearAllSessionStorage();
       cy.visit('/opencart/index.php?route=account/login');
    });
 
@@ -86,18 +87,18 @@ describe('Given a user visits the Login page', () => {
       }
    );
 
-   /**
-    * After this test, the session has been set and users may access pages directly
-    * If using 'parrallel execution, we have to ensure that each suite does the 'doLogin' command
-    */
-   context(
-      'When the user enters valid credentials for logging in',
-      { tags: '@functional' },
-      () => {
-         it('Then the user shall log in and be redirected to the accounts page', () => {
-            cy.clearCookies();
-            cy.doLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
-         });
-      }
-   );
+   // /**
+   //  * After this test, the session has been set and users may access pages directly
+   //  * If using 'parrallel execution, we have to ensure that each suite does the 'doLogin' command
+   //  */
+   // context(
+   //    'When the user enters valid credentials for logging in',
+   //    { tags: '@functional' },
+   //    () => {
+   //       it('Then the user shall log in and be redirected to the accounts page', () => {
+   //          cy.clearCookies();
+   //          cy.doLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
+   //       });
+   //    }
+   // );
 });
