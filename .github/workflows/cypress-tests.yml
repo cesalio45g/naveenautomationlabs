@@ -11,11 +11,9 @@ jobs:
       steps:
          - name: Checkout
            uses: actions/checkout@v3
-
            # install any NPM dependencies like plugins, etc.
          - name: Cyress Install
            run: npm install --legacy-peer-deps
-
          # install cypress steps - maintained by cypress.io
          # do not run cypress tests during the install
          - name: Cypress Run
@@ -25,18 +23,14 @@ jobs:
               config-file: cypress.config.ts
               browser: chrome
               headless: true
-
            # maintained by GitHub & handles the upload of our build directory
            # this is how we preserve our build folder in subsequent jobs and build folders
-         - name: Save Screenshots Artifacts
-           uses: actions/upload-artifact@v3
+         - uses: actions/upload-artifact@v3
            if: failure()
            with:
               name: cypress-screenshots
               path: cypress/screenshots
-
-         - name: Save Video Artifacts
-           uses: actions/upload-artifacts@v3
+         - uses: actions/upload-artifacts@v3
            if: always()
            with:
               name: cypress-video
