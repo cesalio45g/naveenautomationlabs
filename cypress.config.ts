@@ -23,7 +23,7 @@ module.exports = defineConfig({
       viewportHeight: 1080,
       viewportWidth: 1920,
       video: true,
-      setupNodeEvents(on, config) {
+      setupNodeEvents(on: any, config: any) {
          require('cypress-mochawesome-reporter/plugin')(on);
          require('@cypress/grep/src/plugin')(config);
          return config;

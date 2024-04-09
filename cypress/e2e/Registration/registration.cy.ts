@@ -15,6 +15,7 @@ describe(
    { tags: '@negative' },
    () => {
       beforeEach(() => {
+         cy.clearAllSessionStorage();
          cy.visit('/opencart/index.php?route=account/register');
       });
 

@@ -1,12 +1,15 @@
+import AddressBookElements from '../../Pages/AddressBook/AddressBookElements';
+const addressBookElements = new AddressBookElements();
 import AddressBookActions from '../../Pages/AddressBook/AddressBookActions';
 const addressBookActions = new AddressBookActions();
-import addresses from '../../fixtures/addressBook.json';
+import Address from '../../fixtures/addressBook.json';
 
 describe(
    'Given a user selects to Add a new address',
    { tags: '@negative' },
    () => {
       before(() => {
+         cy.clearAllSessionStorage();
          cy.visit('/opencart/index.php?route=account/login');
          cy.doLogin(Cypress.env('EMAIL'), Cypress.env('PASSWORD'));
       });
@@ -18,16 +21,21 @@ describe(
          cy.visit('/opencart/index.php?route=account/address/add');
       });
 
+      after(() => {
+         cy.doLogout();
+      });
+
       context(
          'When the user tries to enter a new address without a first name',
          () => {
             it('Then the form shall not save the new address and an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.enterFirstName('');
+               // we cannot type an empty string, we need to use .clear()
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getFirstNameField().clear();
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );
@@ -46,12 +54,12 @@ describe(
          'When the user tries to enter a new address wihtout a last name',
          () => {
             it('Then the form shall not save the new address and an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.enterLastName('');
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getLastNameField().clear();
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );
@@ -70,12 +78,12 @@ describe(
          'When the user tries to enter a new address without an Address1',
          () => {
             it('Then the form shall not save the new address and an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.enterAddress1('');
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getAddress1Field().clear();
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );
@@ -94,12 +102,12 @@ describe(
          'When the user tries to enter a new address without a city',
          () => {
             it('Then the form shall not save the new address an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.enterCityName('');
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getCityField().clear();
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );
@@ -118,12 +126,12 @@ describe(
          'When the user tries to enter a new address without a Country',
          () => {
             it('Then the form shall not save the new address and an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.selectCountry(' --- Please Select --- ');
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getCountryField().select(0);
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );
@@ -139,12 +147,12 @@ describe(
          'When the user tries to enter a new address without a Region/State',
          () => {
             it('Then the form shall not save the new address and an empty field warning shall appear', () => {
-               addressBookActions.enterNewAddress(addresses[0]);
-               addressBookActions.selectRegionState(' --- Please Select --- ');
+               addressBookActions.enterNewAddress(Address);
+               addressBookElements.getRegionStateField().select(0);
                addressBookActions.clickContinueBtn();
 
                cy.location().then(($loc) => {
-                  cy.wrap($loc.pathname).should(
+                  cy.wrap($loc.search).should(
                      'eq',
                      '?route=account/address/add'
                   );

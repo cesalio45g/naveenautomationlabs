@@ -60,6 +60,20 @@ Cypress.Commands.add('doLogin', (email, password) => {
    );
    cy.getCookie('OCSESSID').should('exist');
    cy.location().then(($loc) => {
-      cy.wrap($loc.pathname).should('eq', '?route=account/account');
+      cy.wrap($loc.search).should('eq', '?route=account/account');
+   });
+});
+
+Cypress.Commands.add('doLogout', () => {
+   cy.get('a[title="My Account"]').scrollIntoView().click({ force: true });
+
+   cy.get('li.open ul.dropdown-menu')
+      .should('be.visible')
+      .within(() => {
+         cy.get('li').last().should('be.visible').find('a').click();
+      });
+
+   cy.location().then(($loc) => {
+      cy.wrap($loc.search).should('eq', '?route=account/logout');
    });
 });

@@ -1,37 +1,11 @@
 {
-   "Addresses": [
-      {
-         "firstName": "Leonardo",
-         "lastName": "DeCaprio",
-         "companyName": "Screen Actors Guild",
-         "address1": "123 Hollywood Lane",
-         "address2": "Suite abc",
-         "city": "Hollywood",
-         "postCode": "33004",
-         "country": "United States",
-         "regionState": "California"
-      },
-      {
-         "firstName": "Alberto",
-         "lastName": "Einstien",
-         "companyName": "Relativity Resources, LLC",
-         "address1": "999 Infinity Place",
-         "address2": "",
-         "city": "Detroit",
-         "postCode": "48201",
-         "country": "United States",
-         "regionState": "Michigan"
-      },
-      {
-         "firstName": "Johnny",
-         "lastName": "Walker",
-         "companyName": "Whiskey Brewing Company",
-         "address1": "1234 Keep Walking Road",
-         "address2": "",
-         "city": "Chattanooga",
-         "postCode": "37343",
-         "country": "United States",
-         "regionState": "Tennessee"
-      }
-   ]
+   "firstName": "Leonardo",
+   "lastName": "DeCaprio",
+   "companyName": "Screen Actors Guild",
+   "address1": "123 Hollywood Lane",
+   "address2": "Suite abc",
+   "city": "Hollywood",
+   "postCode": "33004",
+   "country": "United States",
+   "regionState": "California"
 }

@@ -13,42 +13,42 @@ class AddressBookActions {
     * Enters the last name within the last name field on the Add Address page
     */
    enterLastName(lastName: string) {
-      addressBookElements.getFirstNameField().clear().type(lastName);
+      addressBookElements.getLastNameField().clear().type(lastName);
    }
 
    /**
     * Enters the city name within the city field on the Add Address page
     */
    enterCompanyName(companyName: string) {
-      addressBookElements.getFirstNameField().clear().type(companyName);
+      addressBookElements.getCompanyField().clear().type(companyName);
    }
 
    /**
     * Enters the Address Line 1 within the Address1 field on the Add Address page
     */
    enterAddress1(address1: string) {
-      addressBookElements.getFirstNameField().clear().type(address1);
+      addressBookElements.getAddress1Field().clear().type(address1);
    }
 
    /**
     * Enters the Address Line 2 within the Address2 field on the Add Address page
     */
    enterAddress2(address2: string) {
-      addressBookElements.getFirstNameField().clear().type(address2);
+      addressBookElements.getAddress2Field().clear().type(address2);
    }
 
    /**
     * Enters the City name within the city field on the Add Address page
     */
    enterCityName(city: string) {
-      addressBookElements.getFirstNameField().clear().type(city);
+      addressBookElements.getCityField().clear().type(city);
    }
 
    /**
     * Enters a postal code within the postcode field on the Add Address page
     */
    enterPostalCode(postCode: string) {
-      addressBookElements.getFirstNameField().clear().type(postCode);
+      addressBookElements.getPostCodeField().clear().type(postCode);
    }
 
    /**
@@ -56,7 +56,7 @@ class AddressBookActions {
     * we use the actual "name" of the option, instead of the value for readability purposes
     */
    selectCountry(country: string) {
-      addressBookElements.getFirstNameField().select(country);
+      addressBookElements.getCountryField().select(country);
    }
 
    /**
@@ -64,7 +64,7 @@ class AddressBookActions {
     * we use the actual "name" of the option, instead of the value for readability purposes
     */
    selectRegionState(regionState: string) {
-      addressBookElements.getFirstNameField().select(regionState);
+      addressBookElements.getRegionStateField().select(regionState);
    }
 
    /**
