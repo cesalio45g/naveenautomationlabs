@@ -1,0 +1,42 @@
+name: Run Naveen Cypress Tests
+on: push
+
+env:
+   CYPRESS_EMAIL: ${{secrets.CYPRESS_EMAIL}}
+   CYPRESS_PASSWORD: ${{secrets.CYPRESS_PASSWORD}}
+
+jobs:
+   install:
+      runs-on: ubuntu-latest
+      steps:
+         - name: Checkout
+           uses: actions/checkout@v4
+
+           # install any NPM dependencies like plugins, etc.
+         - name: Cyress Install
+           run: npm install --legacy-peer-deps
+
+         # install cypress steps - maintained by cypress.io
+         # do not run cypress tests during the install
+         - name: Cypress Run
+           uses: cypress-io/github-actions@v6
+           with:
+              config-file: cypress.config.ts
+              browser: chrome
+              headless: true
+
+           # maintained by GitHub & handles the upload of our build directory
+           # this is how we preserve our build folder in subsequent jobs and build folders
+         - name: Save Screenshots Artifacts
+           uses: actions/upload-artifact@v4
+           if: failure()
+           with:
+              name: cypress-screenshots
+              path: cypress/screenshots
+
+         - name: Save Video Artifacts
+           uses: actions/upload-artifacts@v4
+           if: always()
+           with:
+              name: cypress-video
+              path: cypress/videos
