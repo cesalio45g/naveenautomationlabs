@@ -21,8 +21,6 @@ jobs:
            with:
               install: false
               config-file: cypress.config.ts
-              browser: chrome
-              headless: true
            # maintained by GitHub & handles the upload of our build directory
            # this is how we preserve our build folder in subsequent jobs and build folders
          - uses: actions/upload-artifact@v3
