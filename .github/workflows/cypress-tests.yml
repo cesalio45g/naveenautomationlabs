@@ -10,13 +10,26 @@ jobs:
       runs-on: ubuntu-latest
       steps:
          - name: Checkout
-           uses: actions/checkout@v2
+           uses: actions/checkout@v3
+           # install any NPM dependencies like plugins, etc.
+         - name: Cyress Install
+           run: npm install --legacy-peer-deps
          # install cypress steps - maintained by cypress.io
          # do not run cypress tests during the install
          - name: Cypress Run
-           uses: cypress-io/github-action@v6
+           uses: cypress-io/github-action@v5
            with:
               install: false
               config-file: cypress.config.ts
-              browser: chrome
-              headless: true
+           # maintained by GitHub & handles the upload of our build directory
+           # this is how we preserve our build folder in subsequent jobs and build folders
+         - uses: actions/upload-artifact@v3
+           if: failure()
+           with:
+              name: cypress-screenshots
+              path: cypress/screenshots
+         - uses: actions/upload-artifact@v3
+           if: always()
+           with:
+              name: cypress-video
+              path: cypress/videos
