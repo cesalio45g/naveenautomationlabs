@@ -21,15 +21,5 @@ jobs:
            with:
               install: false
               config-file: cypress.config.ts
-           # maintained by GitHub & handles the upload of our build directory
-           # this is how we preserve our build folder in subsequent jobs and build folders
-         - uses: actions/upload-artifact@v3
-           if: failure()
-           with:
-              name: cypress-screenshots
-              path: cypress/screenshots
-         - uses: actions/upload-artifact@v3
-           if: always()
-           with:
-              name: cypress-video
-              path: cypress/videos
+              browser: chrome
+              headed: true
