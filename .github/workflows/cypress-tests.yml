@@ -19,4 +19,4 @@ jobs:
               install: false
               config-file: cypress.config.ts
               browser: chrome
-              headless: true
+              headed: true
