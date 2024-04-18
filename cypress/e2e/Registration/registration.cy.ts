@@ -21,7 +21,6 @@ describe(
 
       context(
          'When the user tries to register without a First Name',
-         { tags: '@one' },
          () => {
             it('Then the Registration page shall output a missing First Name Error', () => {
                registrationAction.enterUserRegistrationInfo(User);
