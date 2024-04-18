@@ -1,4 +1,9 @@
 {
+   "scripts": {
+      "cypress:run": "cypress run --record",
+      "cypress:open": "cypress open",
+      "cypress:cloud": "cypress run --record --key df677daa-2c28-462b-8f19-b88c43f995c1"
+   },
    "devDependencies": {
       "@cypress/grep": "^4.0.1",
       "@types/node": "^20.11.30",
