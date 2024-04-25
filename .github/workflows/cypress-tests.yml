@@ -1,8 +1,7 @@
 name: Run Naveen Cypress Tests
 on:
-   push:
-      branches:
-         - main
+   pull_request:
+      branches: ['main']
 
 jobs:
    cypress-run:
