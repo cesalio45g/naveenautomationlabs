@@ -1,7 +1,7 @@
 {
    "scripts": {
-      "cypress:run": "cypress run --record",
-      "cypress:open": "cypress open",
+      "cyrun": "cypress run --record",
+      "cyopen": "cypress open",
       "cypress:cloud": "cypress run --record --key df677daa-2c28-462b-8f19-b88c43f995c1",
       "cypress:negative": "cypress run --env grepTags=@negative",
       "cypress:functional": "cypress run --env grepTags=@functional"
